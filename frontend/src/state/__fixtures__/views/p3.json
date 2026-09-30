@@ -1,0 +1,494 @@
+{
+  "gameId": "demo-001",
+  "viewerId": "p3",
+  "version": 0,
+  "phase": "playing",
+  "turn": {
+    "number": 14,
+    "currentPlayerId": "p2",
+    "step": "action"
+  },
+  "dice": [
+    3,
+    5
+  ],
+  "board": {
+    "tiles": [
+      {
+        "q": 0,
+        "r": -2,
+        "terrain": "mountains",
+        "number": 10
+      },
+      {
+        "q": 1,
+        "r": -2,
+        "terrain": "pasture",
+        "number": 2
+      },
+      {
+        "q": 2,
+        "r": -2,
+        "terrain": "forest",
+        "number": 9
+      },
+      {
+        "q": -1,
+        "r": -1,
+        "terrain": "fields",
+        "number": 12
+      },
+      {
+        "q": 0,
+        "r": -1,
+        "terrain": "hills",
+        "number": 6
+      },
+      {
+        "q": 1,
+        "r": -1,
+        "terrain": "pasture",
+        "number": 4
+      },
+      {
+        "q": 2,
+        "r": -1,
+        "terrain": "hills",
+        "number": 10
+      },
+      {
+        "q": -2,
+        "r": 0,
+        "terrain": "fields",
+        "number": 9
+      },
+      {
+        "q": -1,
+        "r": 0,
+        "terrain": "forest",
+        "number": 11
+      },
+      {
+        "q": 0,
+        "r": 0,
+        "terrain": "desert",
+        "number": null
+      },
+      {
+        "q": 1,
+        "r": 0,
+        "terrain": "forest",
+        "number": 3
+      },
+      {
+        "q": 2,
+        "r": 0,
+        "terrain": "mountains",
+        "number": 8
+      },
+      {
+        "q": -2,
+        "r": 1,
+        "terrain": "forest",
+        "number": 8
+      },
+      {
+        "q": -1,
+        "r": 1,
+        "terrain": "mountains",
+        "number": 3
+      },
+      {
+        "q": 0,
+        "r": 1,
+        "terrain": "fields",
+        "number": 4
+      },
+      {
+        "q": 1,
+        "r": 1,
+        "terrain": "pasture",
+        "number": 5
+      },
+      {
+        "q": -2,
+        "r": 2,
+        "terrain": "hills",
+        "number": 5
+      },
+      {
+        "q": -1,
+        "r": 2,
+        "terrain": "fields",
+        "number": 6
+      },
+      {
+        "q": 0,
+        "r": 2,
+        "terrain": "pasture",
+        "number": 11
+      }
+    ],
+    "harbors": [
+      {
+        "q": 0,
+        "r": -3,
+        "edge": 2,
+        "kind": "any"
+      },
+      {
+        "q": 2,
+        "r": -3,
+        "edge": 3,
+        "kind": "wool"
+      },
+      {
+        "q": 3,
+        "r": -2,
+        "edge": 3,
+        "kind": "any"
+      },
+      {
+        "q": 3,
+        "r": 0,
+        "edge": 4,
+        "kind": "any"
+      },
+      {
+        "q": 1,
+        "r": 2,
+        "edge": 5,
+        "kind": "brick"
+      },
+      {
+        "q": -1,
+        "r": 3,
+        "edge": 0,
+        "kind": "lumber"
+      },
+      {
+        "q": -3,
+        "r": 3,
+        "edge": 0,
+        "kind": "any"
+      },
+      {
+        "q": -3,
+        "r": 1,
+        "edge": 1,
+        "kind": "grain"
+      },
+      {
+        "q": -2,
+        "r": -1,
+        "edge": 2,
+        "kind": "ore"
+      }
+    ],
+    "robber": {
+      "q": 2,
+      "r": 0
+    }
+  },
+  "buildings": [
+    {
+      "owner": "p1",
+      "kind": "city",
+      "at": {
+        "q": 0,
+        "r": -2,
+        "corner": 2
+      }
+    },
+    {
+      "owner": "p2",
+      "kind": "settlement",
+      "at": {
+        "q": 1,
+        "r": -1,
+        "corner": 2
+      }
+    },
+    {
+      "owner": "p4",
+      "kind": "settlement",
+      "at": {
+        "q": -2,
+        "r": 0,
+        "corner": 5
+      }
+    },
+    {
+      "owner": "p1",
+      "kind": "settlement",
+      "at": {
+        "q": 0,
+        "r": 0,
+        "corner": 3
+      }
+    },
+    {
+      "owner": "p3",
+      "kind": "settlement",
+      "at": {
+        "q": 2,
+        "r": 0,
+        "corner": 3
+      }
+    },
+    {
+      "owner": "p2",
+      "kind": "city",
+      "at": {
+        "q": -2,
+        "r": 1,
+        "corner": 2
+      }
+    },
+    {
+      "owner": "p3",
+      "kind": "city",
+      "at": {
+        "q": 0,
+        "r": 1,
+        "corner": 3
+      }
+    },
+    {
+      "owner": "p4",
+      "kind": "city",
+      "at": {
+        "q": 1,
+        "r": 1,
+        "corner": 3
+      }
+    }
+  ],
+  "roads": [
+    {
+      "owner": "p1",
+      "at": {
+        "q": 0,
+        "r": -2,
+        "edge": 2
+      }
+    },
+    {
+      "owner": "p1",
+      "at": {
+        "q": 1,
+        "r": -2,
+        "edge": 3
+      }
+    },
+    {
+      "owner": "p2",
+      "at": {
+        "q": 1,
+        "r": -1,
+        "edge": 1
+      }
+    },
+    {
+      "owner": "p2",
+      "at": {
+        "q": 1,
+        "r": -1,
+        "edge": 2
+      }
+    },
+    {
+      "owner": "p4",
+      "at": {
+        "q": -2,
+        "r": 0,
+        "edge": 4
+      }
+    },
+    {
+      "owner": "p4",
+      "at": {
+        "q": -2,
+        "r": 0,
+        "edge": 5
+      }
+    },
+    {
+      "owner": "p1",
+      "at": {
+        "q": 0,
+        "r": 0,
+        "edge": 3
+      }
+    },
+    {
+      "owner": "p3",
+      "at": {
+        "q": 2,
+        "r": 0,
+        "edge": 3
+      }
+    },
+    {
+      "owner": "p2",
+      "at": {
+        "q": -2,
+        "r": 1,
+        "edge": 2
+      }
+    },
+    {
+      "owner": "p3",
+      "at": {
+        "q": 0,
+        "r": 1,
+        "edge": 3
+      }
+    },
+    {
+      "owner": "p3",
+      "at": {
+        "q": 1,
+        "r": 1,
+        "edge": 1
+      }
+    },
+    {
+      "owner": "p4",
+      "at": {
+        "q": 1,
+        "r": 1,
+        "edge": 3
+      }
+    }
+  ],
+  "players": [
+    {
+      "id": "p1",
+      "name": "Anna",
+      "color": "red",
+      "resourceCount": 7,
+      "devCardCount": 2,
+      "knightsPlayed": 1,
+      "playedDevCards": {
+        "knight": 1,
+        "roadBuilding": 0,
+        "yearOfPlenty": 0,
+        "monopoly": 0,
+        "victoryPoint": 0
+      },
+      "piecesLeft": {
+        "roads": 12,
+        "settlements": 4,
+        "cities": 3
+      },
+      "victoryPoints": 3
+    },
+    {
+      "id": "p2",
+      "name": "Bram",
+      "color": "blue",
+      "resourceCount": 8,
+      "devCardCount": 1,
+      "knightsPlayed": 3,
+      "playedDevCards": {
+        "knight": 3,
+        "roadBuilding": 0,
+        "yearOfPlenty": 0,
+        "monopoly": 0,
+        "victoryPoint": 0
+      },
+      "piecesLeft": {
+        "roads": 12,
+        "settlements": 4,
+        "cities": 3
+      },
+      "victoryPoints": 5
+    },
+    {
+      "id": "p3",
+      "name": "Carla",
+      "color": "orange",
+      "resourceCount": 5,
+      "devCardCount": 3,
+      "knightsPlayed": 0,
+      "playedDevCards": {
+        "knight": 0,
+        "roadBuilding": 0,
+        "yearOfPlenty": 0,
+        "monopoly": 0,
+        "victoryPoint": 0
+      },
+      "piecesLeft": {
+        "roads": 12,
+        "settlements": 4,
+        "cities": 3
+      },
+      "victoryPoints": 3
+    },
+    {
+      "id": "p4",
+      "name": "Daan",
+      "color": "white",
+      "resourceCount": 8,
+      "devCardCount": 1,
+      "knightsPlayed": 1,
+      "playedDevCards": {
+        "knight": 1,
+        "roadBuilding": 0,
+        "yearOfPlenty": 0,
+        "monopoly": 0,
+        "victoryPoint": 0
+      },
+      "piecesLeft": {
+        "roads": 12,
+        "settlements": 4,
+        "cities": 3
+      },
+      "victoryPoints": 3
+    }
+  ],
+  "hand": {
+    "resources": {
+      "lumber": 0,
+      "brick": 0,
+      "wool": 4,
+      "grain": 1,
+      "ore": 0
+    },
+    "devCards": {
+      "knight": 2,
+      "roadBuilding": 0,
+      "yearOfPlenty": 1,
+      "monopoly": 0,
+      "victoryPoint": 0
+    },
+    "newDevCards": {
+      "knight": 0,
+      "roadBuilding": 0,
+      "yearOfPlenty": 0,
+      "monopoly": 0,
+      "victoryPoint": 0
+    }
+  },
+  "bank": {
+    "resources": {
+      "lumber": 13,
+      "brick": 14,
+      "wool": 12,
+      "grain": 13,
+      "ore": 15
+    },
+    "devCardsLeft": 13
+  },
+  "awards": {
+    "longestRoad": null,
+    "largestArmy": "p2"
+  },
+  "winnerId": null,
+  "trade": null,
+  "pendingDiscards": {},
+  "devCardPlayedThisTurn": false,
+  "roadBuildingLeft": 0,
+  "legalActions": []
+}

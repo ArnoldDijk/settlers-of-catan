@@ -1,0 +1,37 @@
+/* ============================================================
+   Azure IoT Course — Typography tokens
+   ============================================================ */
+
+:root {
+  --font-display: 'Montserrat', system-ui, sans-serif;
+  --font-body: 'Montserrat', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', ui-monospace, monospace;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-extrabold: 800;
+
+  --text-display: 56px;
+  --text-title: 42px;
+  --text-h2: 32px;
+  --text-h3: 24px;
+  --text-lead: 22px;
+  --text-body-lg: 20px;
+  --text-body: 18px;
+  --text-small: 16px;
+  --text-caption: 14px;
+  --text-micro: 12px;
+
+  --leading-tight: 1.08;
+  --leading-snug: 1.2;
+  --leading-normal: 1.45;
+  --leading-relaxed: 1.6;
+
+  --tracking-display: -0.02em;
+  --tracking-tight: -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.04em;
+  --tracking-caps: 0.12em;
+}

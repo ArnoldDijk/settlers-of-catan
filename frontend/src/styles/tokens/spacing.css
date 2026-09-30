@@ -1,0 +1,44 @@
+/* ============================================================
+   Azure IoT Course — Spacing, radii, shadows, motion
+   ============================================================ */
+
+:root {
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+  --radius-circle: 50%;
+
+  --border-thin: 1px;
+  --border-md: 2px;
+  --border-thick: 3px;
+
+  --shadow-sm: 0 1px 2px rgba(22, 30, 60, 0.06), 0 1px 3px rgba(22, 30, 60, 0.08);
+  --shadow-md: 0 4px 12px rgba(22, 30, 60, 0.10);
+  --shadow-lg: 0 12px 32px rgba(22, 30, 60, 0.14);
+  --shadow-card: 0 6px 24px rgba(22, 30, 60, 0.10);
+  --shadow-focus: 0 0 0 3px rgba(109, 138, 245, 0.45);
+
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --duration-fast: 140ms;
+  --duration-base: 240ms;
+  --duration-slow: 420ms;
+}

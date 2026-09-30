@@ -1,0 +1,61 @@
+/* ============================================================
+   Azure IoT Course — Color tokens (from the Claude Design system)
+   Base palette + semantic aliases.
+   ============================================================ */
+
+:root {
+  /* --- Core neutrals --- */
+  --bb-ink: #161E3C;
+  --bb-white: #FFFFFF;
+  --bb-black: #000000;
+
+  /* Navy tints */
+  --bb-ink-900: #161E3C;
+  --bb-ink-700: #3A4263;
+  --bb-ink-500: #6A7191;
+  --bb-ink-300: #A9AEC4;
+  --bb-ink-100: #E4E6EE;
+  --bb-ink-050: #F3F4F8;
+
+  /* --- Accent palette --- */
+  --bb-mauve: #A64F6D;
+  --bb-plum: #5C3660;
+  --bb-teal: #00B38A;
+  --bb-periwinkle: #6D8AF5;
+  --bb-amber: #FFB35E;
+  --bb-yellow: #F9F871;
+
+  /* Accent soft tints */
+  --bb-mauve-soft: #F4E7EC;
+  --bb-plum-soft: #ECE4EE;
+  --bb-teal-soft: #DDF4EE;
+  --bb-periwinkle-soft: #E6EBFD;
+  --bb-amber-soft: #FFF1DF;
+  --bb-yellow-soft: #FEFDDC;
+
+  --bb-azure: #0078D4;
+  --bb-azure-dark: #004C87;
+
+  /* Semantic aliases */
+  --text-strong: var(--bb-ink-900);
+  --text-body: var(--bb-ink-700);
+  --text-muted: var(--bb-ink-500);
+  --text-on-dark: var(--bb-white);
+  --text-link: var(--bb-mauve);
+
+  --surface-page: var(--bb-white);
+  --surface-subtle: var(--bb-ink-050);
+  --surface-card: var(--bb-white);
+  --surface-dark: var(--bb-ink-900);
+  --surface-highlight: var(--bb-yellow);
+
+  --border-subtle: var(--bb-ink-100);
+  --border-strong: var(--bb-ink-900);
+
+  --status-success: var(--bb-teal);
+  --status-info: var(--bb-periwinkle);
+  --status-warning: var(--bb-amber);
+  --status-accent: var(--bb-mauve);
+
+  --focus-ring: var(--bb-periwinkle);
+}

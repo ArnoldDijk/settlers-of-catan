@@ -1,0 +1,39 @@
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "${CATAN_PORT:-8081}:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # FastAPI server. Not published on the host: only reachable through the frontend's nginx at /api/.
+  backend:
+    build:
+      context: ./backend
+      target: server
+    volumes:
+      - catan-data:/data
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    restart: unless-stopped
+
+  # Headless simulations. Only starts when asked for; never starts the frontend or backend:
+  #   docker compose --profile sim run --rm sim --games 1000 --out /out/results.jsonl
+  sim:
+    profiles: ["sim"]
+    build:
+      context: ./backend
+      target: sim
+    volumes:
+      - ./sim-results:/out
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+
+volumes:
+  catan-data:

@@ -1,0 +1,1863 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Catan API",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/api/health": {
+      "get": {
+        "summary": "Health",
+        "operationId": "health_api_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object",
+                  "title": "Response Health Api Health Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/games": {
+      "post": {
+        "summary": "Create Game",
+        "operationId": "create_game_api_games_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateGameRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateGameResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/join": {
+      "post": {
+        "summary": "Join",
+        "operationId": "join_api_join_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JoinRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JoinResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/games/{game_id}/view": {
+      "get": {
+        "summary": "Get View",
+        "operationId": "get_view_api_games__game_id__view_get",
+        "parameters": [
+          {
+            "name": "game_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Game Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlayerView"
+                }
+              }
+            }
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          }
+        }
+      }
+    },
+    "/api/games/{game_id}/actions": {
+      "post": {
+        "summary": "Act",
+        "operationId": "act_api_games__game_id__actions_post",
+        "parameters": [
+          {
+            "name": "game_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Game Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlayerView"
+                }
+              }
+            }
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ActionRequest": {
+        "properties": {
+          "expectedVersion": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Expectedversion"
+          },
+          "action": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/PlaceSetupSettlement"
+              },
+              {
+                "$ref": "#/components/schemas/PlaceSetupRoad"
+              },
+              {
+                "$ref": "#/components/schemas/Roll"
+              },
+              {
+                "$ref": "#/components/schemas/Discard"
+              },
+              {
+                "$ref": "#/components/schemas/MoveRobber"
+              },
+              {
+                "$ref": "#/components/schemas/BuildRoad"
+              },
+              {
+                "$ref": "#/components/schemas/BuildSettlement"
+              },
+              {
+                "$ref": "#/components/schemas/BuildCity"
+              },
+              {
+                "$ref": "#/components/schemas/BuyDevCard"
+              },
+              {
+                "$ref": "#/components/schemas/PlayKnight"
+              },
+              {
+                "$ref": "#/components/schemas/PlayRoadBuilding"
+              },
+              {
+                "$ref": "#/components/schemas/PlayYearOfPlenty"
+              },
+              {
+                "$ref": "#/components/schemas/PlayMonopoly"
+              },
+              {
+                "$ref": "#/components/schemas/BankTrade"
+              },
+              {
+                "$ref": "#/components/schemas/OfferTrade"
+              },
+              {
+                "$ref": "#/components/schemas/RespondTrade"
+              },
+              {
+                "$ref": "#/components/schemas/ConfirmTrade"
+              },
+              {
+                "$ref": "#/components/schemas/CancelTrade"
+              },
+              {
+                "$ref": "#/components/schemas/EndTurn"
+              }
+            ],
+            "title": "Action",
+            "discriminator": {
+              "propertyName": "type",
+              "mapping": {
+                "bankTrade": "#/components/schemas/BankTrade",
+                "buildCity": "#/components/schemas/BuildCity",
+                "buildRoad": "#/components/schemas/BuildRoad",
+                "buildSettlement": "#/components/schemas/BuildSettlement",
+                "buyDevCard": "#/components/schemas/BuyDevCard",
+                "cancelTrade": "#/components/schemas/CancelTrade",
+                "confirmTrade": "#/components/schemas/ConfirmTrade",
+                "discard": "#/components/schemas/Discard",
+                "endTurn": "#/components/schemas/EndTurn",
+                "moveRobber": "#/components/schemas/MoveRobber",
+                "offerTrade": "#/components/schemas/OfferTrade",
+                "placeSetupRoad": "#/components/schemas/PlaceSetupRoad",
+                "placeSetupSettlement": "#/components/schemas/PlaceSetupSettlement",
+                "playKnight": "#/components/schemas/PlayKnight",
+                "playMonopoly": "#/components/schemas/PlayMonopoly",
+                "playRoadBuilding": "#/components/schemas/PlayRoadBuilding",
+                "playYearOfPlenty": "#/components/schemas/PlayYearOfPlenty",
+                "respondTrade": "#/components/schemas/RespondTrade",
+                "roll": "#/components/schemas/Roll"
+              }
+            }
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "expectedVersion",
+          "action"
+        ],
+        "title": "ActionRequest"
+      },
+      "Awards": {
+        "properties": {
+          "longestRoad": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Longestroad"
+          },
+          "largestArmy": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Largestarmy"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "longestRoad",
+          "largestArmy"
+        ],
+        "title": "Awards"
+      },
+      "Bank": {
+        "properties": {
+          "resources": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "propertyNames": {
+              "enum": [
+                "lumber",
+                "brick",
+                "wool",
+                "grain",
+                "ore"
+              ]
+            },
+            "type": "object",
+            "title": "Resources"
+          },
+          "devCardsLeft": {
+            "type": "integer",
+            "title": "Devcardsleft"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "resources",
+          "devCardsLeft"
+        ],
+        "title": "Bank"
+      },
+      "BankTrade": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "bankTrade",
+            "title": "Type"
+          },
+          "give": {
+            "type": "string",
+            "enum": [
+              "lumber",
+              "brick",
+              "wool",
+              "grain",
+              "ore"
+            ],
+            "title": "Give"
+          },
+          "get": {
+            "type": "string",
+            "enum": [
+              "lumber",
+              "brick",
+              "wool",
+              "grain",
+              "ore"
+            ],
+            "title": "Get"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "type",
+          "give",
+          "get"
+        ],
+        "title": "BankTrade"
+      },
+      "Board": {
+        "properties": {
+          "tiles": {
+            "items": {
+              "$ref": "#/components/schemas/Tile"
+            },
+            "type": "array",
+            "title": "Tiles"
+          },
+          "harbors": {
+            "items": {
+              "$ref": "#/components/schemas/Harbor"
+            },
+            "type": "array",
+            "title": "Harbors"
+          },
+          "robber": {
+            "$ref": "#/components/schemas/HexCoord"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "tiles",
+          "harbors",
+          "robber"
+        ],
+        "title": "Board"
+      },
+      "BuildCity": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "buildCity",
+            "title": "Type"
+          },
+          "at": {
+            "$ref": "#/components/schemas/VertexRef"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "type",
+          "at"
+        ],
+        "title": "BuildCity"
+      },
+      "BuildRoad": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "buildRoad",
+            "title": "Type"
+          },
+          "at": {
+            "$ref": "#/components/schemas/EdgeRef"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "type",
+          "at"
+        ],
+        "title": "BuildRoad"
+      },
+      "BuildSettlement": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "buildSettlement",
+            "title": "Type"
+          },
+          "at": {
+            "$ref": "#/components/schemas/VertexRef"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "type",
+          "at"
+        ],
+        "title": "BuildSettlement"
+      },
+      "Building": {
+        "properties": {
+          "owner": {
+            "type": "string",
+            "title": "Owner"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "settlement",
+              "city"
+            ],
+            "title": "Kind"
+          },
+          "at": {
+            "$ref": "#/components/schemas/VertexRef"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "owner",
+          "kind",
+          "at"
+        ],
+        "title": "Building"
+      },
+      "BuyDevCard": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "buyDevCard",
+            "title": "Type"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "title": "BuyDevCard"
+      },
+      "CancelTrade": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "cancelTrade",
+            "title": "Type"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "title": "CancelTrade"
+      },
+      "ConfirmTrade": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "confirmTrade",
+            "title": "Type"
+          },
+          "withPlayer": {
+            "type": "string",
+            "pattern": "^p[1-4]$",
+            "title": "Withplayer"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "type",
+          "withPlayer"
+        ],
+        "title": "ConfirmTrade"
+      },
+      "CreateGameRequest": {
+        "properties": {
+          "players": {
+            "items": {
+              "type": "string",
+              "maxLength": 24,
+              "minLength": 1
+            },
+            "type": "array",
+            "maxItems": 4,
+            "minItems": 2,
+            "title": "Players"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "players"
+        ],
+        "title": "CreateGameRequest"
+      },
+      "CreateGameResponse": {
+        "properties": {
+          "gameId": {
+            "type": "string",
+            "title": "Gameid"
+          },
+          "seats": {
+            "items": {
+              "$ref": "#/components/schemas/Seat"
+            },
+            "type": "array",
+            "title": "Seats"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "gameId",
+          "seats"
+        ],
+        "title": "CreateGameResponse"
+      },
+      "DevCards": {
+        "properties": {
+          "knight": {
+            "type": "integer",
+            "title": "Knight"
+          },
+          "roadBuilding": {
+            "type": "integer",
+            "title": "Roadbuilding"
+          },
+          "yearOfPlenty": {
+            "type": "integer",
+            "title": "Yearofplenty"
+          },
+          "monopoly": {
+            "type": "integer",
+            "title": "Monopoly"
+          },
+          "victoryPoint": {
+            "type": "integer",
+            "title": "Victorypoint"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "knight",
+          "roadBuilding",
+          "yearOfPlenty",
+          "monopoly",
+          "victoryPoint"
+        ],
+        "title": "DevCards"
+      },
+      "Discard": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "discard",
+            "title": "Type"
+          },
+          "resources": {
+            "additionalProperties": {
+              "type": "integer",
+              "maximum": 19.0,
+              "minimum": 0.0
+            },
+            "propertyNames": {
+              "enum": [
+                "lumber",
+                "brick",
+                "wool",
+                "grain",
+                "ore"
+              ]
+            },
+            "type": "object",
+            "title": "Resources"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "type",
+          "resources"
+        ],
+        "title": "Discard"
+      },
+      "EdgeRef": {
+        "properties": {
+          "q": {
+            "type": "integer",
+            "maximum": 3.0,
+            "minimum": -3.0,
+            "title": "Q"
+          },
+          "r": {
+            "type": "integer",
+            "maximum": 3.0,
+            "minimum": -3.0,
+            "title": "R"
+          },
+          "edge": {
+            "type": "integer",
+            "maximum": 5.0,
+            "minimum": 0.0,
+            "title": "Edge"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "q",
+          "r",
+          "edge"
+        ],
+        "title": "EdgeRef"
+      },
+      "EndTurn": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "endTurn",
+            "title": "Type"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "title": "EndTurn"
+      },
+      "ErrorBody": {
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "Code"
+          },
+          "detail": {
+            "type": "string",
+            "title": "Detail"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "code",
+          "detail"
+        ],
+        "title": "ErrorBody"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "Hand": {
+        "properties": {
+          "resources": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "propertyNames": {
+              "enum": [
+                "lumber",
+                "brick",
+                "wool",
+                "grain",
+                "ore"
+              ]
+            },
+            "type": "object",
+            "title": "Resources"
+          },
+          "devCards": {
+            "$ref": "#/components/schemas/DevCards"
+          },
+          "newDevCards": {
+            "$ref": "#/components/schemas/DevCards"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "resources",
+          "devCards",
+          "newDevCards"
+        ],
+        "title": "Hand"
+      },
+      "Harbor": {
+        "properties": {
+          "q": {
+            "type": "integer",
+            "maximum": 3.0,
+            "minimum": -3.0,
+            "title": "Q"
+          },
+          "r": {
+            "type": "integer",
+            "maximum": 3.0,
+            "minimum": -3.0,
+            "title": "R"
+          },
+          "edge": {
+            "type": "integer",
+            "maximum": 5.0,
+            "minimum": 0.0,
+            "title": "Edge"
+          },
+          "kind": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "lumber",
+                  "brick",
+                  "wool",
+                  "grain",
+                  "ore"
+                ]
+              },
+              {
+                "type": "string",
+                "const": "any"
+              }
+            ],
+            "title": "Kind"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "q",
+          "r",
+          "edge",
+          "kind"
+        ],
+        "title": "Harbor"
+      },
+      "HexCoord": {
+        "properties": {
+          "q": {
+            "type": "integer",
+            "maximum": 3.0,
+            "minimum": -3.0,
+            "title": "Q"
+          },
+          "r": {
+            "type": "integer",
+            "maximum": 3.0,
+            "minimum": -3.0,
+            "title": "R"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "q",
+          "r"
+        ],
+        "title": "HexCoord"
+      },
+      "JoinRequest": {
+        "properties": {
+          "token": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 20,
+            "pattern": "^[A-Za-z0-9_-]+$",
+            "title": "Token"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "token"
+        ],
+        "title": "JoinRequest"
+      },
+      "JoinResponse": {
+        "properties": {
+          "gameId": {
+            "type": "string",
+            "title": "Gameid"
+          },
+          "playerId": {
+            "type": "string",
+            "title": "Playerid"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "gameId",
+          "playerId"
+        ],
+        "title": "JoinResponse"
+      },
+      "MoveRobber": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "moveRobber",
+            "title": "Type"
+          },
+          "to": {
+            "$ref": "#/components/schemas/HexCoord"
+          },
+          "stealFrom": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^p[1-4]$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stealfrom"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "type",
+          "to"
+        ],
+        "title": "MoveRobber"
+      },
+      "OfferTrade": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "offerTrade",
+            "title": "Type"
+          },
+          "give": {
+            "additionalProperties": {
+              "type": "integer",
+              "maximum": 19.0,
+              "minimum": 0.0
+            },
+            "propertyNames": {
+              "enum": [
+                "lumber",
+                "brick",
+                "wool",
+                "grain",
+                "ore"
+              ]
+            },
+            "type": "object",
+            "title": "Give"
+          },
+          "get": {
+            "additionalProperties": {
+              "type": "integer",
+              "maximum": 19.0,
+              "minimum": 0.0
+            },
+            "propertyNames": {
+              "enum": [
+                "lumber",
+                "brick",
+                "wool",
+                "grain",
+                "ore"
+              ]
+            },
+            "type": "object",
+            "title": "Get"
+          },
+          "to": {
+            "items": {
+              "type": "string",
+              "pattern": "^p[1-4]$"
+            },
+            "type": "array",
+            "maxItems": 3,
+            "minItems": 1,
+            "title": "To"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "type",
+          "give",
+          "get",
+          "to"
+        ],
+        "title": "OfferTrade"
+      },
+      "PiecesLeft": {
+        "properties": {
+          "roads": {
+            "type": "integer",
+            "title": "Roads"
+          },
+          "settlements": {
+            "type": "integer",
+            "title": "Settlements"
+          },
+          "cities": {
+            "type": "integer",
+            "title": "Cities"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "roads",
+          "settlements",
+          "cities"
+        ],
+        "title": "PiecesLeft"
+      },
+      "PlaceSetupRoad": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "placeSetupRoad",
+            "title": "Type"
+          },
+          "at": {
+            "$ref": "#/components/schemas/EdgeRef"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "type",
+          "at"
+        ],
+        "title": "PlaceSetupRoad"
+      },
+      "PlaceSetupSettlement": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "placeSetupSettlement",
+            "title": "Type"
+          },
+          "at": {
+            "$ref": "#/components/schemas/VertexRef"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "type",
+          "at"
+        ],
+        "title": "PlaceSetupSettlement"
+      },
+      "PlayKnight": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "playKnight",
+            "title": "Type"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "title": "PlayKnight"
+      },
+      "PlayMonopoly": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "playMonopoly",
+            "title": "Type"
+          },
+          "resource": {
+            "type": "string",
+            "enum": [
+              "lumber",
+              "brick",
+              "wool",
+              "grain",
+              "ore"
+            ],
+            "title": "Resource"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "type",
+          "resource"
+        ],
+        "title": "PlayMonopoly"
+      },
+      "PlayRoadBuilding": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "playRoadBuilding",
+            "title": "Type"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "title": "PlayRoadBuilding"
+      },
+      "PlayYearOfPlenty": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "playYearOfPlenty",
+            "title": "Type"
+          },
+          "resources": {
+            "additionalProperties": {
+              "type": "integer",
+              "maximum": 19.0,
+              "minimum": 0.0
+            },
+            "propertyNames": {
+              "enum": [
+                "lumber",
+                "brick",
+                "wool",
+                "grain",
+                "ore"
+              ]
+            },
+            "type": "object",
+            "title": "Resources"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "type",
+          "resources"
+        ],
+        "title": "PlayYearOfPlenty"
+      },
+      "PlayerView": {
+        "properties": {
+          "gameId": {
+            "type": "string",
+            "title": "Gameid"
+          },
+          "viewerId": {
+            "type": "string",
+            "title": "Viewerid"
+          },
+          "version": {
+            "type": "integer",
+            "title": "Version"
+          },
+          "phase": {
+            "type": "string",
+            "enum": [
+              "setup",
+              "playing",
+              "finished"
+            ],
+            "title": "Phase"
+          },
+          "turn": {
+            "$ref": "#/components/schemas/Turn"
+          },
+          "dice": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "integer"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Dice"
+          },
+          "board": {
+            "$ref": "#/components/schemas/Board"
+          },
+          "buildings": {
+            "items": {
+              "$ref": "#/components/schemas/Building"
+            },
+            "type": "array",
+            "title": "Buildings"
+          },
+          "roads": {
+            "items": {
+              "$ref": "#/components/schemas/Road"
+            },
+            "type": "array",
+            "title": "Roads"
+          },
+          "players": {
+            "items": {
+              "$ref": "#/components/schemas/PublicPlayer"
+            },
+            "type": "array",
+            "title": "Players"
+          },
+          "hand": {
+            "$ref": "#/components/schemas/Hand"
+          },
+          "bank": {
+            "$ref": "#/components/schemas/Bank"
+          },
+          "awards": {
+            "$ref": "#/components/schemas/Awards"
+          },
+          "winnerId": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Winnerid"
+          },
+          "trade": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TradeOfferView"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "pendingDiscards": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Pendingdiscards"
+          },
+          "devCardPlayedThisTurn": {
+            "type": "boolean",
+            "title": "Devcardplayedthisturn"
+          },
+          "roadBuildingLeft": {
+            "type": "integer",
+            "title": "Roadbuildingleft"
+          },
+          "legalActions": {
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/PlaceSetupSettlement"
+                },
+                {
+                  "$ref": "#/components/schemas/PlaceSetupRoad"
+                },
+                {
+                  "$ref": "#/components/schemas/Roll"
+                },
+                {
+                  "$ref": "#/components/schemas/Discard"
+                },
+                {
+                  "$ref": "#/components/schemas/MoveRobber"
+                },
+                {
+                  "$ref": "#/components/schemas/BuildRoad"
+                },
+                {
+                  "$ref": "#/components/schemas/BuildSettlement"
+                },
+                {
+                  "$ref": "#/components/schemas/BuildCity"
+                },
+                {
+                  "$ref": "#/components/schemas/BuyDevCard"
+                },
+                {
+                  "$ref": "#/components/schemas/PlayKnight"
+                },
+                {
+                  "$ref": "#/components/schemas/PlayRoadBuilding"
+                },
+                {
+                  "$ref": "#/components/schemas/PlayYearOfPlenty"
+                },
+                {
+                  "$ref": "#/components/schemas/PlayMonopoly"
+                },
+                {
+                  "$ref": "#/components/schemas/BankTrade"
+                },
+                {
+                  "$ref": "#/components/schemas/OfferTrade"
+                },
+                {
+                  "$ref": "#/components/schemas/RespondTrade"
+                },
+                {
+                  "$ref": "#/components/schemas/ConfirmTrade"
+                },
+                {
+                  "$ref": "#/components/schemas/CancelTrade"
+                },
+                {
+                  "$ref": "#/components/schemas/EndTurn"
+                }
+              ],
+              "discriminator": {
+                "propertyName": "type",
+                "mapping": {
+                  "bankTrade": "#/components/schemas/BankTrade",
+                  "buildCity": "#/components/schemas/BuildCity",
+                  "buildRoad": "#/components/schemas/BuildRoad",
+                  "buildSettlement": "#/components/schemas/BuildSettlement",
+                  "buyDevCard": "#/components/schemas/BuyDevCard",
+                  "cancelTrade": "#/components/schemas/CancelTrade",
+                  "confirmTrade": "#/components/schemas/ConfirmTrade",
+                  "discard": "#/components/schemas/Discard",
+                  "endTurn": "#/components/schemas/EndTurn",
+                  "moveRobber": "#/components/schemas/MoveRobber",
+                  "offerTrade": "#/components/schemas/OfferTrade",
+                  "placeSetupRoad": "#/components/schemas/PlaceSetupRoad",
+                  "placeSetupSettlement": "#/components/schemas/PlaceSetupSettlement",
+                  "playKnight": "#/components/schemas/PlayKnight",
+                  "playMonopoly": "#/components/schemas/PlayMonopoly",
+                  "playRoadBuilding": "#/components/schemas/PlayRoadBuilding",
+                  "playYearOfPlenty": "#/components/schemas/PlayYearOfPlenty",
+                  "respondTrade": "#/components/schemas/RespondTrade",
+                  "roll": "#/components/schemas/Roll"
+                }
+              }
+            },
+            "type": "array",
+            "title": "Legalactions"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "gameId",
+          "viewerId",
+          "version",
+          "phase",
+          "turn",
+          "dice",
+          "board",
+          "buildings",
+          "roads",
+          "players",
+          "hand",
+          "bank",
+          "awards",
+          "winnerId",
+          "trade",
+          "pendingDiscards",
+          "devCardPlayedThisTurn",
+          "roadBuildingLeft",
+          "legalActions"
+        ],
+        "title": "PlayerView",
+        "description": "One player's view of the game: public information plus their own hand."
+      },
+      "PublicPlayer": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "color": {
+            "type": "string",
+            "enum": [
+              "red",
+              "blue",
+              "orange",
+              "white"
+            ],
+            "title": "Color"
+          },
+          "resourceCount": {
+            "type": "integer",
+            "title": "Resourcecount"
+          },
+          "devCardCount": {
+            "type": "integer",
+            "title": "Devcardcount"
+          },
+          "knightsPlayed": {
+            "type": "integer",
+            "title": "Knightsplayed"
+          },
+          "playedDevCards": {
+            "$ref": "#/components/schemas/DevCards"
+          },
+          "piecesLeft": {
+            "$ref": "#/components/schemas/PiecesLeft"
+          },
+          "victoryPoints": {
+            "type": "integer",
+            "title": "Victorypoints"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "color",
+          "resourceCount",
+          "devCardCount",
+          "knightsPlayed",
+          "playedDevCards",
+          "piecesLeft",
+          "victoryPoints"
+        ],
+        "title": "PublicPlayer"
+      },
+      "RespondTrade": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "respondTrade",
+            "title": "Type"
+          },
+          "accept": {
+            "type": "boolean",
+            "title": "Accept"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "type",
+          "accept"
+        ],
+        "title": "RespondTrade"
+      },
+      "Road": {
+        "properties": {
+          "owner": {
+            "type": "string",
+            "title": "Owner"
+          },
+          "at": {
+            "$ref": "#/components/schemas/EdgeRef"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "owner",
+          "at"
+        ],
+        "title": "Road"
+      },
+      "Roll": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "roll",
+            "title": "Type"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "title": "Roll"
+      },
+      "Seat": {
+        "properties": {
+          "playerId": {
+            "type": "string",
+            "title": "Playerid"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "color": {
+            "type": "string",
+            "enum": [
+              "red",
+              "blue",
+              "orange",
+              "white"
+            ],
+            "title": "Color"
+          },
+          "joinUrl": {
+            "type": "string",
+            "title": "Joinurl"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "playerId",
+          "name",
+          "color",
+          "joinUrl"
+        ],
+        "title": "Seat"
+      },
+      "Tile": {
+        "properties": {
+          "q": {
+            "type": "integer",
+            "maximum": 3.0,
+            "minimum": -3.0,
+            "title": "Q"
+          },
+          "r": {
+            "type": "integer",
+            "maximum": 3.0,
+            "minimum": -3.0,
+            "title": "R"
+          },
+          "terrain": {
+            "type": "string",
+            "enum": [
+              "forest",
+              "hills",
+              "pasture",
+              "fields",
+              "mountains",
+              "desert"
+            ],
+            "title": "Terrain"
+          },
+          "number": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "maximum": 12.0,
+                "minimum": 2.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Number"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "q",
+          "r",
+          "terrain",
+          "number"
+        ],
+        "title": "Tile"
+      },
+      "TradeOfferView": {
+        "properties": {
+          "offerer": {
+            "type": "string",
+            "title": "Offerer"
+          },
+          "give": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "propertyNames": {
+              "enum": [
+                "lumber",
+                "brick",
+                "wool",
+                "grain",
+                "ore"
+              ]
+            },
+            "type": "object",
+            "title": "Give"
+          },
+          "get": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "propertyNames": {
+              "enum": [
+                "lumber",
+                "brick",
+                "wool",
+                "grain",
+                "ore"
+              ]
+            },
+            "type": "object",
+            "title": "Get"
+          },
+          "to": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "To"
+          },
+          "responses": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "type": "object",
+            "title": "Responses"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "offerer",
+          "give",
+          "get",
+          "to",
+          "responses"
+        ],
+        "title": "TradeOfferView"
+      },
+      "Turn": {
+        "properties": {
+          "number": {
+            "type": "integer",
+            "title": "Number"
+          },
+          "currentPlayerId": {
+            "type": "string",
+            "title": "Currentplayerid"
+          },
+          "step": {
+            "type": "string",
+            "enum": [
+              "setupSettlement",
+              "setupRoad",
+              "roll",
+              "discard",
+              "moveRobber",
+              "action",
+              "roadBuilding",
+              "finished"
+            ],
+            "title": "Step"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "number",
+          "currentPlayerId",
+          "step"
+        ],
+        "title": "Turn"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "VertexRef": {
+        "properties": {
+          "q": {
+            "type": "integer",
+            "maximum": 3.0,
+            "minimum": -3.0,
+            "title": "Q"
+          },
+          "r": {
+            "type": "integer",
+            "maximum": 3.0,
+            "minimum": -3.0,
+            "title": "R"
+          },
+          "corner": {
+            "type": "integer",
+            "maximum": 5.0,
+            "minimum": 0.0,
+            "title": "Corner"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "q",
+          "r",
+          "corner"
+        ],
+        "title": "VertexRef"
+      }
+    }
+  }
+}
